@@ -1,17 +1,16 @@
 <div class="container">
-    <form class="example-form">
+
+    <form #login="ngForm" class="example-form" (ngSubmit) = "Submit(login)">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Username" value="">
+            <input required type="email" matInput placeholder="Email" value="" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" ngModel [ngModelOptions]="{standalone: true}">
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="Password" value="">
+            <input required type="text" minlength="15" matInput placeholder="Password" value="" onchange="" ngModel [ngModelOptions]="{standalone: true}">
         </mat-form-field>
+    <button mat-button type="submit">Basic</button>
     </form>
 
-    <button mat-button>Basic</button>
-
-    <button mat-raised-button>Basic</button>
 </div>

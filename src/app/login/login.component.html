@@ -3,14 +3,14 @@
     <form #login="ngForm" class="example-form" (ngSubmit) = "Submit(login)">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Email</mat-label>
-            <input required type="email" matInput placeholder="Email" value="" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" ngModel [ngModelOptions]="{standalone: true}">
+            <input required type="email" matInput placeholder="Email" value="" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" ngModel [ngModelOptions]="{standalone: true}" [(ngModel)]="email">
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Password</mat-label>
-            <input required type="text" minlength="15" matInput placeholder="Password" value="" onchange="" ngModel [ngModelOptions]="{standalone: true}">
+            <input required type="text" minlength="4" matInput placeholder="Password" value="" onchange="" ngModel [ngModelOptions]="{standalone: true}" [(ngModel)]="password">
         </mat-form-field>
-    <button mat-button type="submit">Log in</button>
+    <button mat-button type="submit" (click)="onLogin()">Log in</button>
     </form>
 
 </div>

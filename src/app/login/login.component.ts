@@ -7,6 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  email: string = "";
+  password: string = "";
+
   constructor() { }
 
   ngOnInit(): void {
@@ -14,5 +17,16 @@ export class LoginComponent implements OnInit {
 
   Submit(login : any){
     console.log('submited', login);
+  }
+
+  onLogin()
+  {
+    if(this.email === "test@test.com" && this.password === "test!")
+    {
+      alert("Login!");
+    }
+    else{
+      alert("Wrong password");
+    }
   }
 }

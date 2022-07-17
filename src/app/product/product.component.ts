@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { ShoppingService } from '../services/shopping.service';
-import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 
 @Component({
   selector: 'app-product',
@@ -31,4 +30,5 @@ export interface Product{
   title : string;
   description : string;
   price : number;
+  imagePath : string;
 }

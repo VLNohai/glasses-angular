@@ -6,6 +6,9 @@
             <mat-card-content>
                 {{product.description}}
             </mat-card-content>
+            <mat-card-content>
+                <img width="120px" src="{{product.imagePath}}" class="product-photo">
+            </mat-card-content>
             <mat-card-actions class="price-and-add">
                 {{product.price}}€
                 <button mat-button (click)="addToCart(product)">ADD</button>

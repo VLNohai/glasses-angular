@@ -1,18 +1,25 @@
 <app-navbar></app-navbar>
-<div *ngFor="let product of productMap.keys()" class="table-view">
-    <mat-card class="example-card">
-        <mat-card-title>{{product.title}}</mat-card-title>
-        <mat-card-content>
-            {{product.description}}
-        </mat-card-content>
-        <mat-card-content>
-            Price Per item: {{product.price}}
-        </mat-card-content>
-        <mat-card-content>
-            Quantity: x{{productMap.get(product)}}
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-button (click) = "removeOneItem(product)">Remove</button>
-        </mat-card-actions>
-    </mat-card>
+<div class="card-wrapper">
+    <div *ngFor="let product of productMap.keys()">
+        <mat-card class="example-card">
+            <mat-card-title>{{product.title}}</mat-card-title>
+            <mat-card-content>
+                {{product.description}}
+            </mat-card-content>
+            <mat-card-content>
+                Price Per item: {{product.price}}€
+            </mat-card-content>
+            <mat-card-content>
+                Quantity: x{{productMap.get(product)}}
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button (click)="removeOneItem(product)">Remove</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+<div class="price-info-bar">
+    <mat-toolbar>
+      <span class="price-info">Total:  {{totalPrice}}€</span>
+    </mat-toolbar>
 </div>

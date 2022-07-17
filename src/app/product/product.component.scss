@@ -1,7 +1,13 @@
 .example-card {
-    max-width: 25%;
+    max-width: 400px;
   }
 
-.table-view{
-  ;
+.card-wrapper{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.price-and-add{
+  margin-left: 5px;
 }

@@ -9,10 +9,18 @@ import { ShoppingService } from '../services/shopping.service';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  products : Product [] = [];
+  productMap = new Map<Product, number>()
 
   constructor(private shoppingService : ShoppingService) { 
-    this.products = shoppingService.getProducts();
+    this.productMap = shoppingService.getProducts();
+  }
+
+  removeOneItem(product : Product){
+    if(this.productMap.get(product)! > 1){
+      this.productMap.set(product, this.productMap.get(product)! - 1);
+      return;
+    }
+    this.productMap.delete(product);
   }
 
   ngOnInit(): void {

@@ -10,6 +10,7 @@ export class LoginComponent implements OnInit {
 
   email: string = "";
   password: string = "";
+  hide : boolean = true;
 
   constructor(private route: Router) { }
 
@@ -30,4 +31,8 @@ export class LoginComponent implements OnInit {
       alert("Wrong password");
     }
   }
+}
+
+export class FormFieldPrefixSuffixExample {
+  hide = true;
 }

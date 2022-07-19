@@ -1,18 +1,40 @@
 <app-navbar></app-navbar>
-<div class="card-wrapper">
-    <div *ngFor="let product of products">
-        <mat-card class="example-card">
-            <mat-card-title>{{product.title}}</mat-card-title>
-            <mat-card-content>
-                {{product.description}}
-            </mat-card-content>
-            <mat-card-content>
-                <img width="120px" src="{{product.imagePath}}" class="product-photo">
-            </mat-card-content>
-            <mat-card-actions class="price-and-add">
-                {{product.price}}€
-                <button mat-button (click)="addToCart(product)">ADD</button>
-            </mat-card-actions>
-        </mat-card>
-    </div>
-</div>
+
+<mat-drawer-container class="example-container">
+    <mat-drawer class="sidenav" mode="side" opened>
+        &nbsp;&nbsp;&nbsp;Price range:<br>
+        <ngx-slider (mouseup)="recalculateResults()" class="price-slider" [(value)]="minValue" [(highValue)]="maxValue"
+            [options]="options"></ngx-slider>
+        <mat-form-field appearance="fill" class="sort-by-input">
+            <mat-label>Sort by</mat-label>
+            <mat-select (selectionChange)="sortResults()" [(ngModel)]="sortCriteriaID">
+                <mat-option *ngFor="let crit of sortCriterias" [value]="crit.id">{{crit.description}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" (change) = "recalculateResults()"
+            [(ngModel)]="categoryDisplayed">
+            <mat-radio-button class="example-radio-button" *ngFor="let category of prodCategories" [value]="category">
+                {{category}}
+            </mat-radio-button>
+        </mat-radio-group>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="card-wrapper">
+            <div *ngFor="let product of productsOnDisplay">
+                <mat-card class="example-card">
+                    <mat-card-title>{{product.title}}</mat-card-title>
+                    <mat-card-content>
+                        {{product.description}}
+                    </mat-card-content>
+                    <mat-card-content>
+                        <img width="120px" src="{{product.imagePath}}" class="product-photo">
+                    </mat-card-content>
+                    <mat-card-actions class="price-and-add">
+                        {{product.price}}€
+                        <button mat-button (click)="addToCart(product)">ADD</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

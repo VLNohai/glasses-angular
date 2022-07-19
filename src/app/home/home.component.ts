@@ -12,6 +12,14 @@ export class HomeComponent implements OnInit {
   color: string = "green";
   newTitle: string = "test";
 
+  public name = 'angular';
+  public nr = 15;
+
+  public person = {
+    "first" : "dana",
+    "second" : "popescu"
+  }
+
   constructor() { }
 
   ngOnInit(): void {

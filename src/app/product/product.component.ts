@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { ShoppingService } from '../services/shopping.service';
+import { Options } from '@angular-slider/ngx-slider';
 
 @Component({
   selector: 'app-product',
@@ -9,18 +10,73 @@ import { ShoppingService } from '../services/shopping.service';
 })
 export class ProductComponent implements OnInit {
 
-  products : Product [] = [];
+  stock : Product [] = [];
+  productsOnDisplay : Product [] = [];
+  minValue : number = 0;
+  maxValue : number = 1000;
+  sortCriteriaID : number = 0;
+  categoryDisplayed : string = 'glasses';
+
+  sortCriterias = [{
+    description : 'Price ascending',
+    id : 0
+  },
+  {
+    description : 'Price descending',
+    id : 1
+  }]
+
+  prodCategories = [
+    "glasses",
+    "case",
+    "lenses"
+  ]
+
+  options: Options = {
+    floor: 0,
+    ceil: 50,
+    translate: (value: number): string => {
+      return '€' + value;
+    },
+    combineLabels: (minValue: string, maxValue: string): string => {
+      return 'from ' + minValue + ' up to ' + maxValue;
+    }
+  };
 
   constructor(private productService : ProductService, private shoppingService : ShoppingService) {
 
    }
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+    this.stock = this.productService.getProducts();
+    this.productsOnDisplay = this.stock;
+    this.sortResults();
+    this.options.ceil = this.productsOnDisplay[this.productsOnDisplay.length - 1].price;
+    this.options.floor = this.productsOnDisplay[0].price;
+    this.recalculateResults();
   }
 
   addToCart(product : Product){
     this.shoppingService.addProduct(product);
+  }
+
+  recalculateResults(){
+    this.productsOnDisplay = [];
+    this.stock.forEach(product => {
+      if(product.category === this.categoryDisplayed && product.price <= this.maxValue && product.price >= this.minValue)
+        this.productsOnDisplay.push(product);
+    });
+  }
+
+  sortResults() {
+    if (this.sortCriteriaID === 0)
+      this.productsOnDisplay.sort(function (a, b) {
+        return a.price - b.price;
+      });
+    else
+      this.productsOnDisplay.sort(function (a, b) {
+        return b.price - a.price;
+      });
   }
 
 }
@@ -31,4 +87,6 @@ export interface Product{
   description : string;
   price : number;
   imagePath : string;
+  category : string;
 }
+

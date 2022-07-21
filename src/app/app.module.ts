@@ -20,6 +20,9 @@ import { MatSliderModule } from '@angular/material/slider';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { CustomPipe } from './custom.pipe';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { ItemInfoComponent } from './item-info/item-info.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { MatRadioModule } from '@angular/material/radio';
     LoginComponent,
     NavbarComponent,
     routingComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    CustomPipe,
+    ItemInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSliderModule,
     NgxSliderModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

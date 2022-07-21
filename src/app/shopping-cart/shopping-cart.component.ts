@@ -1,4 +1,6 @@
+import { ArrayType } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs';
 import { Product } from '../product/product.component';
 import { ShoppingService } from '../services/shopping.service';
 
@@ -10,31 +12,24 @@ import { ShoppingService } from '../services/shopping.service';
 export class ShoppingCartComponent implements OnInit {
 
   productMap = new Map<Product, number>()
-  totalPrice : number = 0;
 
-  constructor(private shoppingService : ShoppingService) { 
-    this.productMap = shoppingService.getProducts();
-    this.calculateTotal();
+  constructor(private shoppingService: ShoppingService) {
+
   }
 
-  removeOneItem(product : Product){
-    if(this.productMap.get(product)! > 1){
+  removeOneItem(product: Product) {
+
+    if (this.productMap.get(product)! > 1) {
       this.productMap.set(product, this.productMap.get(product)! - 1);
     }
-    else{
-    this.productMap.delete(product);
+    else {
+      this.productMap.delete(product);
     }
-    this.calculateTotal();
-  }
-
-  calculateTotal(){
-    this.totalPrice = 0;
-    for(let product of this.productMap.keys()){
-      this.totalPrice += product.price * this.productMap.get(product)!;
-    }
+    this.productMap = this.productMap;
   }
 
   ngOnInit(): void {
+    this.productMap = this.shoppingService.getProducts();
   }
 
 }

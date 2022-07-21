@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { ItemInfoComponent } from './item-info/item-info.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductComponent } from './product/product.component';
@@ -16,7 +17,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path:'login',
+    path: 'login',
     component: LoginComponent
   },
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: "cart",
     component: ShoppingCartComponent
+  },
+  {
+    path: 'items/:id',
+    component: ItemInfoComponent
   },
   {
     path: "**",
@@ -39,4 +44,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponent = [HomeComponent,PageNotFoundComponent, ProductComponent];
+export const routingComponent = [HomeComponent, PageNotFoundComponent, ProductComponent];

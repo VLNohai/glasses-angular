@@ -135,7 +135,7 @@ export class ProductService{
         id : 15,
         title : "toc4",
         description : "descriere7",
-        price : 18,
+        price : 19,
         imagePath : folder + 'toc4' + ext,
         category : 'case'
     }

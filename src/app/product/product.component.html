@@ -24,14 +24,12 @@
                 <mat-card class="example-card">
                     <mat-card-title>{{product.title}}</mat-card-title>
                     <mat-card-content>
-                        {{product.description}}
-                    </mat-card-content>
-                    <mat-card-content>
                         <img width="120px" src="{{product.imagePath}}" class="product-photo">
                     </mat-card-content>
                     <mat-card-actions class="price-and-add">
                         {{product.price}}€
-                        <button mat-button (click)="addToCart(product)">ADD</button>
+                        <button mat-button matTooltip="Add to cart" (click)="addToCart(product)">ADD</button>
+                        <button mat-button matTooltip="Go to product page" routerLink="items/{{product.id}}">INFO</button>
                     </mat-card-actions>
                 </mat-card>
             </div>

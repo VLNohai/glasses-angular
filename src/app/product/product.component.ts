@@ -51,8 +51,6 @@ export class ProductComponent implements OnInit {
     this.stock = this.productService.getProducts();
     this.productsOnDisplay = this.stock;
     this.sortResults();
-    this.options.ceil = this.productsOnDisplay[this.productsOnDisplay.length - 1].price;
-    this.options.floor = this.productsOnDisplay[0].price;
     this.recalculateResults();
   }
 
@@ -66,6 +64,9 @@ export class ProductComponent implements OnInit {
       if(product.category === this.categoryDisplayed && product.price <= this.maxValue && product.price >= this.minValue)
         this.productsOnDisplay.push(product);
     });
+    this.options.ceil = this.productsOnDisplay[this.productsOnDisplay.length - 1].price;
+    this.options.floor = this.productsOnDisplay[0].price;
+    console.log(this.options.ceil + " " + this.options.floor)
   }
 
   sortResults() {

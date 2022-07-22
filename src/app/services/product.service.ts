@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { count } from "rxjs";
 import { Product } from "../product/product.component";
 
 const folder = 'assets/resources/'
@@ -164,7 +165,7 @@ export class ProductService {
             if(product.category === category && product.price >= minprice && product.price <= maxprice)
                 counter++;
         })
-        return this.products.length;
+        return counter;
     }
 
     createProduct(productTitle: string, productDescription: string, price: string) {

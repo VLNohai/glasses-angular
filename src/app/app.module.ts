@@ -23,6 +23,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { CustomPipe } from './custom.pipe';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { ItemInfoComponent } from './item-info/item-info.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { ChildComponent } from './child/child.component';
+import { ParentComponent } from './parent/parent.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { ItemInfoComponent } from './item-info/item-info.component';
     routingComponent,
     ShoppingCartComponent,
     CustomPipe,
-    ItemInfoComponent
+    ItemInfoComponent,
+    AddProductComponent,
+    ChildComponent,
+    ParentComponent
   ],
   imports: [
     BrowserModule,

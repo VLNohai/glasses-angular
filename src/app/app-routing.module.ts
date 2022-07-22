@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddProductComponent } from './add-product/add-product.component';
 import { HomeComponent } from './home/home.component';
 import { ItemInfoComponent } from './item-info/item-info.component';
 import { LoginComponent } from './login/login.component';
@@ -29,7 +30,11 @@ const routes: Routes = [
     component: ShoppingCartComponent
   },
   {
-    path: 'items/:id',
+    path: "products/addnew",
+    component: AddProductComponent
+  },
+  {
+    path: 'products/:id',
     component: ItemInfoComponent
   },
   {
@@ -43,5 +48,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
 export const routingComponent = [HomeComponent, PageNotFoundComponent, ProductComponent];

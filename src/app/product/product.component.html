@@ -29,10 +29,13 @@
                     <mat-card-actions class="price-and-add">
                         {{product.price}}€
                         <button mat-button matTooltip="Add to cart" (click)="addToCart(product)">ADD</button>
-                        <button mat-button matTooltip="Go to product page" routerLink="items/{{product.id}}">INFO</button>
+                        <button mat-button matTooltip="Go to product page" routerLink="/products/{{product.id}}">INFO</button>
                     </mat-card-actions>
                 </mat-card>
             </div>
         </div>
+        <mat-card class="product">
+            <button mat-icon-button routerLink="addnew"><mat-icon class='mat-icon'>add</mat-icon></button>
+          </mat-card>
     </mat-drawer-content>
 </mat-drawer-container>

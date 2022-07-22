@@ -9,7 +9,7 @@ const ext = '.jpg'
 export class ProductService{
     products : Product[] = [{
             id : 0,
-            title : "test",
+            title : "pair",
             description : "descriere",
             price : 15,
             imagePath : folder + 'pair1' + ext,
@@ -17,7 +17,7 @@ export class ProductService{
     },
     {
         id : 1,
-        title : "test2",
+        title : "pair2",
         description : "descriere2",
         price : 20,
         imagePath : folder + 'pair2' + ext,
@@ -25,7 +25,7 @@ export class ProductService{
     },
     {
         id : 2,
-        title : "test3",
+        title : "pair3",
         description : "descriere3",
         price : 10,
         imagePath : folder + 'pair3' + ext,
@@ -33,7 +33,7 @@ export class ProductService{
     },
     {
         id : 3,
-        title : "test4",
+        title : "pair4",
         description : "descriere4",
         price : 25,
         imagePath : folder + 'pair4' + ext,
@@ -41,7 +41,7 @@ export class ProductService{
     },
     {
         id : 4,
-        title : "test5",
+        title : "pair5",
         description : "descriere5",
         price : 7,
         imagePath : folder + 'pair5' + ext,
@@ -50,7 +50,7 @@ export class ProductService{
     },
     {
         id : 5,
-        title : "test6",
+        title : "pair6",
         description : "descriere6",
         price : 12,
         imagePath : folder + 'pair6' + ext,
@@ -59,7 +59,7 @@ export class ProductService{
     },
     {
         id : 6,
-        title : "test6",
+        title : "pair7",
         description : "descriere6",
         price : 12,
         imagePath : folder + 'pair6' + ext,
@@ -68,7 +68,7 @@ export class ProductService{
     },
     {
         id : 7,
-        title : "test6",
+        title : "pair8",
         description : "descriere6",
         price : 12,
         imagePath : folder + 'pair6' + ext,
@@ -77,7 +77,7 @@ export class ProductService{
     },
     {
         id : 8,
-        title : "test6",
+        title : "pair9",
         description : "descriere6",
         price : 12,
         imagePath : folder + 'pair6' + ext,
@@ -85,7 +85,7 @@ export class ProductService{
     },
     {
         id : 9,
-        title : "test6",
+        title : "pair10",
         description : "descriere6",
         price : 12,
         imagePath : folder + 'pair6' + ext,
@@ -93,7 +93,7 @@ export class ProductService{
     },
     {
         id : 10,
-        title : "test6",
+        title : "pair11",
         description : "descriere6",
         price : 12,
         imagePath : folder + 'pair6' + ext,
@@ -101,7 +101,7 @@ export class ProductService{
     },
     {
         id : 11,
-        title : "test6",
+        title : "pair12",
         description : "descriere6",
         price : 12,
         imagePath : folder + 'pair6' + ext,
@@ -141,6 +141,19 @@ export class ProductService{
     }
 ]
     getProducts(){
+        console.log('sent products');
         return this.products;
     }
+
+    createProduct(productTitle:string, productDescription:string, price: string) {
+        const product : Product = {
+                    id: 1234,
+                    description: productDescription,
+                    title: productTitle,
+                    price: parseInt(price),
+                    imagePath : '/photo',
+                    category : 'glasses'
+                    };
+        return this.products.push(product);
+      }
 }

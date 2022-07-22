@@ -1,0 +1,19 @@
+<div>
+    <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Title</mat-label>
+            <input [(ngModel)]="title" name="inputTitle" matInput placeholder="title">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea [(ngModel)]="description" name="inputDescription" matInput placeholder="description"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Price</mat-label>
+            <input [(ngModel)]="price" name="inputTitle" matInput placeholder="price">
+        </mat-form-field>
+        <button mat (click)="add()">Finish</button>
+    </form>
+</div>

@@ -19,6 +19,7 @@ export class ProductComponent implements OnInit {
   categoryDisplayed : string = 'glasses';
   pageIndex : number = 0;
   pageSize : number = 8;
+  sizeOptions : number[] = [8, 12, 16, 20];
   resultCount = 0;
 
   sortCriterias = [{
@@ -53,6 +54,8 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.recalculateResults();
+    this.options.floor = this.productService.getPriceRange()[1];
+    this.options.ceil = this.productService.getPriceRange()[0];
   }
 
   addToCart(product : Product){
@@ -61,12 +64,12 @@ export class ProductComponent implements OnInit {
 
   pageEventHandler(event : PageEvent){
     this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
     this.recalculateResults();
   }
 
   recalculateResults(){
     this.resultCount = this.productService.countProductsOfCriteria(this.categoryDisplayed, this.minValue, this.maxValue);
-    console.log(this.resultCount);
     this.productsOnDisplay = this.productService.getProducts(this.pageIndex * this.pageSize, (this.pageIndex + 1) * this.pageSize, this.categoryDisplayed,  this.minValue, this.maxValue, this.sortCriteriaID)
   }
 }

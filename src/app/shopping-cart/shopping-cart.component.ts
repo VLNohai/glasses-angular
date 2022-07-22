@@ -12,30 +12,43 @@ import { ShoppingService } from '../services/shopping.service';
 export class ShoppingCartComponent implements OnInit {
 
   productMap = new Map<Product, number>();
-  totalPrice : number = 0;
+  totalPrice: number = 0;
 
   constructor(private shoppingService: ShoppingService) {
 
   }
 
-  removeOneItem(product: Product) {
-
-    if (this.productMap.get(product)! > 1) {
-      this.productMap.set(product, this.productMap.get(product)! - 1);
-    }
-    else {
+  removeItem(product: Product) {
       this.productMap.delete(product);
+      this.recalculateSum();
+  }
+
+  changeQuantity(product: Product, event: any) {
+    let value = parseInt(event.target.value)
+    if (event.target.value != '') {
+      let reg = new RegExp('^[0-9]*$')
+      if (reg.test(value.toString())) {
+        this.productMap.set(product, value);
+        this.recalculateSum();
+      }
+      else {
+        event.target.value = this.productMap.get(product);
+      }
     }
-    this.totalPrice -= product.price;
+  }
+
+  recalculateSum() {
+    this.totalPrice = 0;
+    let productArray = Array.from(this.productMap.keys());
+    for (let i = 0; i < productArray.length; i++) {
+      this.totalPrice += productArray[i].price * this.productMap.get(productArray[i])!;
+    }
   }
 
   ngOnInit(): void {
     this.productMap = this.shoppingService.getProducts();
     this.totalPrice = 0;
-    let productArray = Array.from(this.productMap.keys());
-    for(let i=0; i< productArray.length; i++){
-      this.totalPrice += productArray[i].price * this.productMap.get(productArray[i])!;
-    }
+    this.recalculateSum();
   }
 
 }

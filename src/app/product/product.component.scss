@@ -57,7 +57,19 @@
   margin: 5px;
 }
 
-.product{
+.addnew{
   width: max-content;
+  max-height: 40px;
   margin: 10px;
+}
+
+.paginator{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.bottomInvisible{
+  height: 50px;
 }

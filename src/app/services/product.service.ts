@@ -8,7 +8,7 @@ const ext = '.jpg'
 @Injectable({ providedIn: "root" })
 
 export class ProductService {
-    products: Product[] = [{
+    products : Product[] = [{
         id: 0,
         title: "pair",
         description: "descriere",
@@ -63,7 +63,7 @@ export class ProductService {
         title: "pair7",
         description: "descriere6",
         price: 12,
-        imagePath: folder + 'pair6' + ext,
+        imagePath: folder + 'pair7' + ext,
         category: 'glasses'
 
     },
@@ -72,7 +72,7 @@ export class ProductService {
         title: "pair8",
         description: "descriere6",
         price: 12,
-        imagePath: folder + 'pair6' + ext,
+        imagePath: folder + 'pair8' + ext,
         category: 'glasses'
 
     },
@@ -81,7 +81,7 @@ export class ProductService {
         title: "pair9",
         description: "descriere6",
         price: 12,
-        imagePath: folder + 'pair6' + ext,
+        imagePath: folder + 'pair9' + ext,
         category: 'glasses'
     },
     {
@@ -89,7 +89,7 @@ export class ProductService {
         title: "pair10",
         description: "descriere6",
         price: 12,
-        imagePath: folder + 'pair6' + ext,
+        imagePath: folder + 'pair10' + ext,
         category: 'glasses'
     },
     {
@@ -97,7 +97,7 @@ export class ProductService {
         title: "pair11",
         description: "descriere6",
         price: 12,
-        imagePath: folder + 'pair6' + ext,
+        imagePath: folder + 'pair11' + ext,
         category: 'glasses'
     },
     {
@@ -105,7 +105,7 @@ export class ProductService {
         title: "pair12",
         description: "descriere6",
         price: 12,
-        imagePath: folder + 'pair6' + ext,
+        imagePath: folder + 'pair12' + ext,
         category: 'glasses'
     },
     {
@@ -139,8 +139,8 @@ export class ProductService {
         price: 19,
         imagePath: folder + 'toc4' + ext,
         category: 'case'
-    }
-    ]
+    }]
+
     getProducts(start: number, stop: number, category: string, minprice : number, maxprice : number, sortCriteriaID: number = 0) {
         let productsCopy = this.products.filter(product => product.category === category && product.price >= minprice && product.price <= maxprice);
         if (sortCriteriaID === 0)
@@ -166,6 +166,14 @@ export class ProductService {
                 counter++;
         })
         return counter;
+    }
+
+    getPriceRange(){
+        let productsCopy = this.products;
+        productsCopy = productsCopy.sort(function(a, b) {
+            return b.price - a.price;
+        });
+        return [productsCopy[0].price, productsCopy[productsCopy.length - 1].price];
     }
 
     createProduct(productTitle: string, productDescription: string, price: string) {

@@ -7,7 +7,7 @@
             [options]="options"></ngx-slider>
         <mat-form-field appearance="fill" class="sort-by-input">
             <mat-label>Sort by</mat-label>
-            <mat-select (selectionChange)="sortResults()" [(ngModel)]="sortCriteriaID">
+            <mat-select (selectionChange)="recalculateResults()" [(ngModel)]="sortCriteriaID">
                 <mat-option *ngFor="let crit of sortCriterias" [value]="crit.id">{{crit.description}}</mat-option>
             </mat-select>
         </mat-form-field>
@@ -33,9 +33,10 @@
                     </mat-card-actions>
                 </mat-card>
             </div>
-        </div>
         <mat-card class="product">
             <button mat-icon-button routerLink="addnew"><mat-icon class='mat-icon'>add</mat-icon></button>
           </mat-card>
+        </div>
+        <mat-paginator [length]="resultCount" [pageSize]="pageSize" [pageIndex]="pageIndex" aria-label="Select page" (page)="pageEventHandler($event)"></mat-paginator>
     </mat-drawer-content>
 </mat-drawer-container>

@@ -26,6 +26,9 @@ import { ItemInfoComponent } from './item-info/item-info.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ChildComponent } from './child/child.component';
 import { ParentComponent } from './parent/parent.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,10 @@ import { ParentComponent } from './parent/parent.component';
     NgxSliderModule,
     MatSelectModule,
     MatRadioModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

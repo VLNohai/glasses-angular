@@ -176,6 +176,16 @@ export class ProductService {
         return [productsCopy[0].price, productsCopy[productsCopy.length - 1].price];
     }
 
+    getItemById(id : number){
+        let product : Product;
+        for(let i=0; i<this.products.length; i++){
+            if(this.products[i].id == id){
+                return this.products[i];
+            }
+        }
+        return null;
+    }
+
     createProduct(productTitle: string, productDescription: string, price: string) {
         const product: Product = {
             id: 1234,

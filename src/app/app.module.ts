@@ -29,6 +29,7 @@ import { ParentComponent } from './parent/parent.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ItemInfoComponent,
     AddProductComponent,
     ChildComponent,
-    ParentComponent
+    ParentComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,

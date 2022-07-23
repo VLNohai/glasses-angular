@@ -46,8 +46,8 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   placeOrder(){
-    this.shoppingService.addOrder(this.productMap, String(new Date()));
-    this.productMap = new Map<Product, number>();
+    this.shoppingService.addOrder(new Map(this.productMap), String(new Date()));
+    this.productMap.clear();
     this.totalPrice = 0;
   }
 

@@ -5,7 +5,7 @@ import { Product, ProductComponent } from "../product/product.component";
 export class ShoppingService{
 
     productMap = new Map<Product, number>()
-    orders : { products : Map<Product, number>, date : string}[] = [];
+    orders : { text : string, date : string}[] = [];
 
     addProduct(product : Product){
         if(this.productMap.has(product))
@@ -19,6 +19,22 @@ export class ShoppingService{
     }
 
     addOrder(products : Map<Product, number>, date : string){
-        this.orders.push({products, date});
+        let text = this.productsToString(products)
+        this.orders.push({text, date});
+    }
+
+    productsToString(products : Map<Product, number>) : string{
+        let arr = Array.from(products.keys());
+        let message = '';
+    
+        arr.forEach(product => {
+          message += '•' + product.title + ' x' + products.get(product) + ';\n ';
+        });
+    
+        return message;
+      }
+
+    getOrders(){
+        return this.orders;
     }
 }

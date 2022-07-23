@@ -45,6 +45,12 @@ export class ShoppingCartComponent implements OnInit {
     }
   }
 
+  placeOrder(){
+    this.shoppingService.addOrder(this.productMap, String(new Date()));
+    this.productMap = new Map<Product, number>();
+    this.totalPrice = 0;
+  }
+
   ngOnInit(): void {
     this.productMap = this.shoppingService.getProducts();
     this.totalPrice = 0;

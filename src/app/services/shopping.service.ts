@@ -5,6 +5,7 @@ import { Product, ProductComponent } from "../product/product.component";
 export class ShoppingService{
 
     productMap = new Map<Product, number>()
+    orders : { products : Map<Product, number>, date : string}[] = [];
 
     addProduct(product : Product){
         if(this.productMap.has(product))
@@ -15,5 +16,9 @@ export class ShoppingService{
 
     getProducts(){
         return this.productMap;
+    }
+
+    addOrder(products : Map<Product, number>, date : string){
+        this.orders.push({products, date});
     }
 }

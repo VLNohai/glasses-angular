@@ -13,13 +13,13 @@ import { ProductService } from '../services/product.service';
 export class NavbarComponent implements OnInit {
 
   myControl = new FormControl('');
-  options: string[] = [];
-  filteredOptions: Observable<string[]> = new Observable<string[]>();
+  options: any[] = [];
+  filteredOptions: Observable<any[]> = new Observable<any[]>();
 
   ngOnInit() {
     this.options = [];
     this.productService.getAllProducts().forEach(product=>{
-      this.options.push(product.title);
+      this.options.push({title : product.title, id : product.id});
     return '';
     });
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -35,11 +35,11 @@ export class NavbarComponent implements OnInit {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue)).slice(0, 4);
+    return this.options.filter(option => option.title.toLowerCase().includes(filterValue)).slice(0, 4);
   }
 
-  accessItem(option : string){
-    this.router.navigateByUrl('products/' + option);
+  accessItem(id : number){
+    setTimeout(() =>this.router.navigateByUrl('products/' + id));
   }
 
 }

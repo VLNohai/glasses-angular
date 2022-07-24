@@ -30,6 +30,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { HistoryComponent } from './history/history.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { HistoryComponent } from './history/history.component';
     AddProductComponent,
     ChildComponent,
     ParentComponent,
-    HistoryComponent
+    HistoryComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

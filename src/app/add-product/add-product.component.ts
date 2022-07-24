@@ -15,11 +15,16 @@ export class AddProductComponent implements OnInit {
 
   constructor(private productService : ProductService, private router : Router) { }
 
+  category : string = '';
+  photoPath : string = '';
+  prodCategories : string [] = [];
+
   ngOnInit(): void {
+    this.prodCategories = this.productService.getCategories();
   }
 
   add(){
-    this.productService.createProduct(this.title, this.description, this.price);
+    this.productService.createProduct(this.title, this.description, this.price, this.category, this.photoPath);
     this.router.navigateByUrl('products');
   }
 

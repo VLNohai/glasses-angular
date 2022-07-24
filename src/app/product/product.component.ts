@@ -31,11 +31,7 @@ export class ProductComponent implements OnInit {
     id : 1
   }]
 
-  prodCategories = [
-    "glasses",
-    "case",
-    "lenses"
-  ]
+  prodCategories : string[] = []
 
   options: Options = {
     floor: 0,
@@ -53,6 +49,7 @@ export class ProductComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.prodCategories = this.productService.getCategories();
     this.recalculateResults();
     this.options.floor = this.productService.getPriceRange()[1];
     this.options.ceil = this.productService.getPriceRange()[0];

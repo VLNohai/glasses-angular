@@ -8,6 +8,13 @@ const ext = '.jpg'
 @Injectable({ providedIn: "root" })
 
 export class ProductService {
+
+    prodCategories : string[] = [
+        "glasses",
+        "case",
+        "lenses"
+    ]
+
     products : Product[] = [{
         id: 0,
         title: "pair",
@@ -155,6 +162,10 @@ export class ProductService {
         return productsCopy;
     }
 
+    getCategories(){
+        return this.prodCategories;
+    }
+
     getAllProducts(){
         return this.products;
     }
@@ -186,14 +197,14 @@ export class ProductService {
         return null;
     }
 
-    createProduct(productTitle: string, productDescription: string, price: string) {
+    createProduct(productTitle: string, productDescription: string, price: string, category : string, photoPath : string) {
         const product: Product = {
             id: 1234,
             description: productDescription,
             title: productTitle,
             price: parseInt(price),
-            imagePath: '/photo',
-            category: 'glasses'
+            imagePath: photoPath,
+            category: category
         };
         return this.products.push(product);
     }

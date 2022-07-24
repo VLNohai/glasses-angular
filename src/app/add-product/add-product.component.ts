@@ -24,7 +24,7 @@ export class AddProductComponent implements OnInit {
   }
 
   add(){
-    this.productService.createProduct(this.title, this.description, this.price, this.category, this.photoPath);
+    this.productService.createProduct(this.title, this.description, this.price, this.category, 'assets/resources/' + this.photoPath + '.jpg');
     this.router.navigateByUrl('products');
   }
 
